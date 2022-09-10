@@ -1,0 +1,52 @@
+.reminderList li {
+  width: 400px;
+  border: 5px solid #4f3920;
+  color: #4f3920;
+  padding: 1em;
+  background-color: rgba(253, 154, 245, 0.966);
+  margin-bottom: 0.6em;
+  position: relative;
+}
+
+.reminderList li .reminderButtonContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.reminderList li h2 {
+  font-size: 1.6rem;
+  margin-top: 0;
+}
+
+.reminderList li details {
+  font-size: 1rem;
+}
+
+.listItemMenuContainer {
+  position: absolute;
+  top: 20px;
+  right: 3px;
+  width: 100px;
+}
+
+.listItemMenuContainer img {
+  display: block;
+  margin-inline: auto;
+  cursor: pointer;
+}
+
+.listItemMenuContainer .listItemMenuButtonContainer {
+  display: none;
+  flex-direction: column;
+}
+
+.listItemMenuContainer .listItemMenuButtonContainer button {
+  width: 100%;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.listItemMenuContainer .listItemMenuButtonContainer button:hover {
+  filter: brightness(80%);
+}

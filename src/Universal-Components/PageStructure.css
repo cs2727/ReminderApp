@@ -1,0 +1,14 @@
+.pageParentContainer {
+  display: flex;
+  flex-direction: column;
+  width: 1550px;
+}
+
+.pageContentContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  border-left: 5px solid #4f3920;
+  background-color: #f2e1b7;
+}

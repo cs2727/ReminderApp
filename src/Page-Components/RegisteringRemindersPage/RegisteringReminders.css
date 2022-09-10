@@ -1,0 +1,44 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: 5px solid #4f3920;
+  padding: 1em;
+  background-color: rgba(253, 154, 245, 0.966);
+}
+form label {
+  font-size: 1.5rem;
+  margin-block: 1em;
+  color: #4f3920;
+  font-weight: bold;
+}
+
+form input,
+form textarea {
+  font-size: 1.3rem;
+  padding: 0.3em;
+}
+
+form input {
+  height: 30px;
+  font-size: 1.3rem;
+}
+
+form textarea {
+  resize: none;
+}
+
+form .submitBtnContainer {
+  margin-block: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form .submitBtnContainer .submitBtn {
+  padding: 0;
+  height: 35px;
+  width: 120px;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
