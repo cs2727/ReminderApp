@@ -6,3 +6,27 @@
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
   border-radius: 11px;
 }
+
+@media only screen and (max-width: 1950px) {
+  .App {
+    width: 1500px;
+  }
+}
+
+@media only screen and (max-width: 1550px) {
+  .App {
+    width: 1300px;
+  }
+}
+
+@media only screen and (max-width: 1350px) {
+  .App {
+    width: 1100px;
+  }
+}
+
+@media only screen and (max-width: 1150px) {
+  .App {
+    width: 95%;
+  }
+}

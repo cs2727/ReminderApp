@@ -18,3 +18,15 @@
 .remindersNotRenderedHeader {
   color: #4f3920;
 }
+
+@media only screen and (max-width: 1150px) {
+  .remindersNotRenderedHeader {
+    font-size: 1.4rem;
+  }
+}
+
+@media only screen and (max-width: 844px) {
+  .remindersNotRenderedHeader {
+    font-size: 1.2rem;
+  }
+}

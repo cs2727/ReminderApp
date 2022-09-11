@@ -43,7 +43,12 @@ function RegisteringReminders() {
       <form onSubmit={updatingReminders}>
         {/* Reminder Name */}
         <label>Reminder Name:</label>
-        <input type="text" placeholder="Dentist Appointment" required />
+        <input
+          type="text"
+          placeholder="Dentist Appointment"
+          maxlength="15"
+          required
+        />
         {/* Reminder Date */}
         <label htmlFor="reminderDate">Reminder Date:</label>
         <input type="date" id="reminderDate" required />
