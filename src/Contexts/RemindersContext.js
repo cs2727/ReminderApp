@@ -13,8 +13,8 @@ function RemindersContext(props) {
     []
   );
 
-  // this function will update the reminders state - called when new reminder is added!
-  function registeringNewReminder(whichState, reminderItem) {
+  // this function will update the reminders and highlightedreminders state - called when new reminder is added! --------------------->
+  function updatingRemindersStates(whichState, reminderItem) {
     let state;
     let changingState;
 
@@ -35,9 +35,8 @@ function RemindersContext(props) {
     }
   }
 
-  // this function will update the sortedReminders state - called when reminder state changes
-  function sortingRemindersBasedOnDates(whichOrderedState, reminders) {
-    console.log(highlightedReminders);
+  // this function will update the sortedReminders and sortedHighlightedReminders state --------------------->
+  function updatingSortedRemindersStates(whichOrderedState, reminders) {
     if (reminders.length === 0) {
       return;
     }
@@ -47,6 +46,7 @@ function RemindersContext(props) {
       reminder.push(new Date(date));
     }
 
+    // this will sort reminders parameter (can be reminders/highlightedreminders) in order of date/time
     reminders.sort((a, b) => {
       return a[5] - b[5];
     });
@@ -54,8 +54,6 @@ function RemindersContext(props) {
     for (const reminder of reminders) {
       reminder.pop();
     }
-
-    console.log(reminders);
 
     if (whichOrderedState === 'reminders') {
       setSortedReminders(reminders);
@@ -70,8 +68,8 @@ function RemindersContext(props) {
     highlightedReminders,
     sortedReminders,
     sortedHighlightedReminders,
-    registeringNewReminder,
-    sortingRemindersBasedOnDates,
+    updatingRemindersStates,
+    updatingSortedRemindersStates,
   };
 
   return (

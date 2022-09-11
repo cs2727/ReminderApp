@@ -3,16 +3,17 @@ import './ReminderItem.css';
 import listItemMenuImg from '../Images/loadingDot.png';
 
 function ReminderItem({
-  itemData,
-  addingData,
+  itemData, // reminder Item
+  remindersData, // reminder state context array
+  highlightedRemindersData, // highlighted reminder context state array
+  updatingRemindersStateData, //
   pathname,
-  highlightedRemindersData,
 }) {
   let counter = 1;
   const listItemMenuButtonContainer = useRef();
   const buttonTextContent = pathname === '/' ? 'Highlight' : 'UnHighlight';
 
-  // this function will toggle the list Item Menu On/Off
+  // this function will toggle the list Item Menu On/Off when it's Image is clicked ------------------------>
   function togglingListItemMenu() {
     const oddOrEven = counter % 2;
 
@@ -28,14 +29,40 @@ function ReminderItem({
     counter++;
   }
 
-  // this function will highlight/unhighlight the reminder depending on the text-content of the button clicked
-  function listItemMenuFunctionalities() {
+  // this function will highlight/unhighlight the reminder --------------------------------->
+  function togglingHighlightFunctionality() {
     listItemMenuButtonContainer.current.style.display = 'none';
 
+    // The code below is for when we highlight a reminder, it will update the HighlightedReminders State array
+    // by adding this reminder Item to it
     if (buttonTextContent === 'Highlight') {
-      addingData('highlightedreminders', itemData);
+      updatingRemindersStateData('highlightedreminders', itemData);
       alert('reminder is highlighted');
       return;
+    }
+
+    // The code below is for when we unhighlight a reminder, it will update the HighlightedReminders state array
+    // by removing this reminder Item from it
+    for (let i = 0; i < highlightedRemindersData.length; i++) {
+      if (itemData[0] === highlightedRemindersData[i][0]) {
+        highlightedRemindersData.splice(i, 1);
+      }
+    }
+
+    updatingRemindersStateData(
+      'highlightedreminders',
+      highlightedRemindersData
+    );
+    alert('reminder unhighlighted');
+  }
+
+  // this function will delete a reminder --------------------------------->
+  function deletingReminderFunctionality() {
+    //The code below will delete this reminder Item from both the reminders & highlightedReminders state array
+    for (let i = 0; i < remindersData.length; i++) {
+      if (itemData[0] === remindersData[i][0]) {
+        remindersData.splice(i, 1);
+      }
     }
 
     for (let i = 0; i < highlightedRemindersData.length; i++) {
@@ -44,8 +71,12 @@ function ReminderItem({
       }
     }
 
-    addingData('highlightedreminders', highlightedRemindersData);
-    alert('reminder unhighlighted');
+    updatingRemindersStateData('reminders', remindersData);
+    updatingRemindersStateData(
+      'highlightedreminders',
+      highlightedRemindersData
+    );
+    alert('Reminder deleted!');
   }
 
   // JSX Code
@@ -61,10 +92,10 @@ function ReminderItem({
           className="listItemMenuButtonContainer"
           ref={listItemMenuButtonContainer}
         >
-          <button onClick={listItemMenuFunctionalities}>
+          <button onClick={togglingHighlightFunctionality}>
             {buttonTextContent}
           </button>
-          <button>Delete</button>
+          <button onClick={deletingReminderFunctionality}>Delete</button>
         </div>
       </div>
 

@@ -14,3 +14,7 @@
   width: 100%;
   padding: 0;
 }
+
+.remindersNotRenderedHeader {
+  color: #4f3920;
+}

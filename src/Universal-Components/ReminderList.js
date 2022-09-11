@@ -9,8 +9,8 @@ function ReminderList() {
     highlightedReminders,
     sortedReminders,
     sortedHighlightedReminders,
-    sortingRemindersBasedOnDates,
-    registeringNewReminder,
+    updatingRemindersStates,
+    updatingSortedRemindersStates,
   } = useContext(remindersContext);
 
   const pathname = window.location.pathname;
@@ -22,11 +22,12 @@ function ReminderList() {
     sortedRemindersState = sortedHighlightedReminders;
   }
 
+  // This useEffect will invoke the cb function if we add/highlight/unhighlight/delete reminders & highlightedreminders
   useEffect(() => {
     if (pathname === '/') {
-      sortingRemindersBasedOnDates('reminders', reminders);
+      updatingSortedRemindersStates('reminders', reminders);
     } else {
-      sortingRemindersBasedOnDates(
+      updatingSortedRemindersStates(
         'highlightedReminders',
         highlightedReminders
       );
@@ -42,8 +43,9 @@ function ReminderList() {
             return (
               <ReminderItem
                 itemData={reminder}
+                remindersData={reminders}
                 highlightedRemindersData={highlightedReminders}
-                addingData={registeringNewReminder}
+                updatingRemindersStateData={updatingRemindersStates}
                 pathname={pathname}
               />
             );
