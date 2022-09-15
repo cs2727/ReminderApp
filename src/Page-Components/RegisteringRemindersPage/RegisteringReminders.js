@@ -46,7 +46,7 @@ function RegisteringReminders() {
         <input
           type="text"
           placeholder="Dentist Appointment"
-          maxlength="15"
+          maxLength="15"
           required
         />
         {/* Reminder Date */}
