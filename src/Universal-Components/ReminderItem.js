@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import './ReminderItem.css';
 import listItemMenuImg from '../Images/loadingDot.png';
 
@@ -12,6 +12,31 @@ function ReminderItem({
   let counter = 1;
   const listItemMenuButtonContainer = useRef();
   const buttonTextContent = pathname === '/' ? 'Highlight' : 'UnHighlight';
+
+  document.onkeydown = function (keyPressed) {
+    if (keyPressed.key === 'Escape') {
+      listItemMenuButtonContainer.current.style.display = 'none';
+      counter = 1;
+    }
+  };
+
+  function removingListItemMenu(eventInst) {
+    if (eventInst.target.className !== 'ListItemMenuImage') {
+      listItemMenuButtonContainer.current.style.display = 'none';
+      counter = 1;
+    }
+  }
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+
+    body.addEventListener('click', removingListItemMenu);
+
+    return () => {
+      body.removeEventListener('click', removingListItemMenu);
+      document.onkeydown = null;
+    };
+  });
 
   // this function will toggle the list Item Menu On/Off when it's Image is clicked ------------------------>
   function togglingListItemMenu() {
@@ -87,6 +112,7 @@ function ReminderItem({
           src={listItemMenuImg}
           alt="loading dot img"
           onClick={togglingListItemMenu}
+          className="ListItemMenuImage"
         />
         <div
           className="listItemMenuButtonContainer"
